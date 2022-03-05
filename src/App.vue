@@ -13,4 +13,11 @@ import { RouterLink, RouterView } from "vue-router";
 
 <style lang="scss">
 @import "normalize.css";
+
+#app {
+  color: #a9b1bd;
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 </style>

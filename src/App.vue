@@ -3,5 +3,10 @@ import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
+  <nav>
+    <RouterLink to="/">All Characters</RouterLink>
+    <RouterLink to="/favourites">Favourites</RouterLink>
+  </nav>
+
   <RouterView />
 </template>

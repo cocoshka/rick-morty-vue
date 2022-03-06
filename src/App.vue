@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import Header from "./components/Header.vue";
+import Navigation from "./components/Navigation.vue";
 </script>
 
 <template>
-  <nav>
-    <RouterLink to="/">All Characters</RouterLink>
-    <RouterLink to="/favourites">Favourites</RouterLink>
-  </nav>
-
+  <Header />
+  <Navigation />
   <RouterView />
 </template>
 

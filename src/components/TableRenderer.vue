@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import type { TableHeaderRenderResult } from "@/models/Table";
-import type { Component } from "vue";
+import type { TableRenderResult } from "@/models/Table";
 import { isVNode, computed } from "vue";
 
 const { rendered } = defineProps<{
-  rendered: TableHeaderRenderResult;
+  rendered: TableRenderResult;
 }>();
 
 const isComponent = computed<boolean>(() => isVNode(rendered));

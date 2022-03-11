@@ -1,20 +1,16 @@
 <script setup lang="tsx">
 import type Character from "@/models/Character";
-import type { TableData, TableHeaders } from "@/models/Table";
+import type { TableColumns } from "@/models/Table";
 import { useCharactersStore } from "@/stores/characters";
 import { GenericTable } from "../components/Table.vue";
-import Table from "../components/Table.vue";
-
-const CharacterTable = GenericTable<Character>();
 
 const charactersStore = useCharactersStore();
 charactersStore.fetchCharacters();
 
-const headers: TableHeaders<Character> = {
-  photo: {
+const headers: TableColumns<Character> = [
+  {
     title: "Photo",
     render(row) {
-      // console.log(row);
       return (
         <img
           src={row.image}
@@ -25,25 +21,28 @@ const headers: TableHeaders<Character> = {
       );
     },
   },
-  id: {
-    title: "Character ID",
-  },
-  name: {
+  {
     title: "Name",
+    field: "name",
   },
-  gender: {
+  {
     title: "Gender",
+    field: "gender",
   },
-  species: {
+  {
     title: "Species",
+    field: "name",
   },
-  episode: {
+  {
+    title: "Name",
+    field: "species",
+  },{
     title: "Last Episode",
     render(row) {
       return row.episode[row.episode.length - 1].episode;
     },
   },
-  favourite: {
+  {
     title: "Add To Favourites",
     render: (row) => {
       return (
@@ -52,11 +51,21 @@ const headers: TableHeaders<Character> = {
         </>
       );
     },
+  }
+];
+</script>
+<script lang="tsx">
+export default {
+  components: {
+    CharacterTable: GenericTable<Character>(),
   },
 };
 </script>
 
 <template>
-  <Table :headers="headers" :data="charactersStore.getAllCharacters"> </Table>
+  <CharacterTable
+    :headers="headers"
+    :data="charactersStore.getAllCharacters"
+  ></CharacterTable>
   <main>Characters</main>
 </template>

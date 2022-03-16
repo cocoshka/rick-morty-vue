@@ -1,3 +1,5 @@
+import "core-js/actual"
+
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 

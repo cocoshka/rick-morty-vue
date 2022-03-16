@@ -2,10 +2,13 @@
 import type Character from "@/models/Character";
 import type { TableColumns } from "@/models/Table";
 import { useCharactersStore } from "@/stores/characters";
+import { useFavouritesStore } from "@/stores/favourites";
 import { GenericTable } from "../components/Table.vue";
 
 const charactersStore = useCharactersStore();
 charactersStore.fetchCharacters();
+
+const favouritesStore = useFavouritesStore();
 
 const headers: TableColumns<Character> = [
   {
@@ -47,7 +50,7 @@ const headers: TableColumns<Character> = [
     render: (row) => {
       return (
         <>
-          <button>test</button>
+          <button onClick={() => favouritesStore.addFavourite(row)}>Add</button>
         </>
       );
     },

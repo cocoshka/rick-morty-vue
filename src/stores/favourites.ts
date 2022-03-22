@@ -10,6 +10,7 @@ export const useFavouritesStore = defineStore({
   state: (): State => ({
     favourites: {},
   }),
+  localStorage: true,
   getters: {
     getFavourites(): Character[] {
       return Object.values(this.favourites);

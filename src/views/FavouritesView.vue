@@ -1,4 +1,5 @@
 <script setup lang="tsx">
+import Button from "@/components/Button.vue";
 import type Character from "@/models/Character";
 import type { TableColumns } from "@/models/Table";
 import { useFavouritesStore } from "@/stores/favourites";
@@ -48,12 +49,19 @@ const headers: TableColumns<Character> = [
     title: "Add To Favourites",
     render: (row) => {
       return (
-        <>
-          <button onClick={() => favouritesStore.addFavourite(row)}>Add</button>
-        </>
+        <Button
+          filled={row.id in favouritesStore.favourites}
+          onClick={() =>
+            row.id in favouritesStore.favourites
+              ? favouritesStore.removeFavourite(row.id)
+              : favouritesStore.addFavourite(row)
+          }
+        >
+          <span class="material-icons">star</span>
+        </Button>
       );
     },
-  }
+  },
 ];
 </script>
 

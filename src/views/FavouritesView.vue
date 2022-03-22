@@ -23,6 +23,10 @@ const headers: TableColumns<Character> = [
     },
   },
   {
+    title: "Character ID",
+    field: "id",
+  },
+  {
     title: "Name",
     field: "name",
   },
@@ -32,23 +36,20 @@ const headers: TableColumns<Character> = [
   },
   {
     title: "Species",
-    field: "name",
+    field: "species",
   },
   {
-    title: "Name",
-    field: "species",
-  },{
     title: "Last Episode",
     render(row) {
       return row.episode[row.episode.length - 1].episode;
     },
   },
   {
-    title: "Remove From Favourites",
+    title: "Add To Favourites",
     render: (row) => {
       return (
         <>
-          <button onClick={() => favouritesStore.removeFavourite(row.id)}>Remove</button>
+          <button onClick={() => favouritesStore.addFavourite(row)}>Add</button>
         </>
       );
     },
@@ -61,5 +62,4 @@ const headers: TableColumns<Character> = [
     :headers="headers"
     :data="favouritesStore.getFavourites"
   ></CharacterTable>
-  <main>Characters</main>
 </template>

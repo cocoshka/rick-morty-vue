@@ -1,14 +1,17 @@
 <script lang="tsx" setup>
 defineProps<{
     filled?: boolean
-    onClick?: () => boolean | void
+}>()
+
+defineEmits<{
+    (event: 'click'): boolean | void 
 }>()
 </script>
 
 <template>
     <button :class="{
         filled
-    }" @click="onClick">
+    }" @click="$emit('click')">
         <slot></slot>
     </button>
 </template>

@@ -1,26 +1,28 @@
 <script lang="ts">
-import type { TableColumns, TableData, TableProps, TableRecord } from "@/models/Table";
+import type {
+  TableColumns,
+  TableData,
+  TableRecord,
+} from "@/models/Table";
 import { defineComponent, type PropType } from "vue";
 import TableRenderer from "./TableRenderer.vue";
 
-class TableFactory<T extends TableRecord> {
-  define() {
-    return defineComponent({
-      components: {
-        TableRenderer
-      },
-      props: {
-        headers: Array as PropType<TableColumns<T>>,
-        data: Array as PropType<TableData<T>>,
-      }
-    });
-  }
-}
+const defineGenericComponent = <T extends Record<string, any>>() =>
+  defineComponent({
+    components: {
+      TableRenderer,
+    },
+    props: {
+      headers: Array as PropType<TableColumns<T>>,
+      data: Array as PropType<TableData<T>>,
+    },
+  });
 
-const main = new TableFactory().define();
+const main = defineGenericComponent();
 
 export function GenericTable<T extends TableRecord>() {
-  return main as ReturnType<TableFactory<T>["define"]>;
+  const defineTComponent = () => defineGenericComponent<T>()
+  return main as ReturnType<typeof defineTComponent>;
 }
 
 export default main;
@@ -66,6 +68,7 @@ table {
     }
 
     &:last-child {
+      width: 100%;
       padding-right: 140px;
     }
   }

@@ -5,6 +5,8 @@ import { useCharactersStore } from "@/stores/characters";
 import { useFavouritesStore } from "@/stores/favourites";
 import { GenericTable } from "../components/Table.vue";
 
+const CharacterTable = GenericTable<Character>();
+
 const charactersStore = useCharactersStore();
 charactersStore.fetchCharacters();
 
@@ -56,13 +58,6 @@ const headers: TableColumns<Character> = [
     },
   }
 ];
-</script>
-<script lang="tsx">
-export default {
-  components: {
-    CharacterTable: GenericTable<Character>(),
-  },
-};
 </script>
 
 <template>

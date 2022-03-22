@@ -27,6 +27,10 @@ const headers: TableColumns<Character> = [
     },
   },
   {
+    title: "Character ID",
+    field: "id",
+  },
+  {
     title: "Name",
     field: "name",
   },
@@ -36,12 +40,9 @@ const headers: TableColumns<Character> = [
   },
   {
     title: "Species",
-    field: "name",
+    field: "species",
   },
   {
-    title: "Name",
-    field: "species",
-  },{
     title: "Last Episode",
     render(row) {
       return row.episode[row.episode.length - 1].episode;
@@ -65,5 +66,4 @@ const headers: TableColumns<Character> = [
     :headers="headers"
     :data="charactersStore.getAllCharacters"
   ></CharacterTable>
-  <main>Characters</main>
 </template>

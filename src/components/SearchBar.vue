@@ -62,7 +62,7 @@ const onSelectOptionClick = (evt: MouseEvent, key: keyof typeof filters) => {
 .search {
   display: flex;
   align-items: stretch;
-  border: 2px solid $gray;
+  border: 1px solid $gray;
   border-radius: 8px;
   height: 56px;
   white-space: nowrap;
@@ -80,6 +80,7 @@ input {
   border: none;
   outline: none;
   padding: 16px;
+  width: auto;
 }
 
 button {
@@ -89,10 +90,10 @@ button {
   border: none;
   outline: none;
   color: $cyan;
-  height: 48px;
-  width: 48px;
+  height: 40px;
+  width: 40px;
   display: grid;
-  flex: 0 0 48px;
+  flex: 0 0 40px;
   margin: 8px;
   align-self: center;
   justify-content: center;
@@ -110,7 +111,7 @@ button {
   * {
     border-radius: 100%;
     padding: 4px;
-    font-size: 36px;
+    font-size: 32px;
   }
 }
 
@@ -151,7 +152,7 @@ button {
   align-content: center;
   justify-content: left;
   height: 100%;
-  border: 2px solid $gray;
+  border: 1px solid $gray;
   border-bottom: none;
   background-color: white;
   padding: 16px;
@@ -160,7 +161,7 @@ button {
   cursor: pointer;
 
   &:hover {
-    background-color: $light-gray;
+    background-color: $darker;
   }
 }
 
@@ -169,12 +170,8 @@ button {
   background-color: white;
 
   .select-option {
-    &:hover {
-      background-color: $light-gray;
-    }
-
     &:last-child {
-      border-bottom: 2px solid $gray;
+      border-bottom: 1px solid $gray;
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
     }

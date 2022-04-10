@@ -13,7 +13,9 @@ const plugin: PiniaPlugin = ({store, options}) => {
     const localId = `pinia_${store.$id}`;
     
     store.$subscribe((evt, state) => {
-      localStorage.setItem(localId, JSON.stringify(state))
+      localStorage.setItem(localId, JSON.stringify(state));
+    }, {
+      detached: true,
     })
     
     const savedState = localStorage.getItem(localId);

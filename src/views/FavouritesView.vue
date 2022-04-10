@@ -3,9 +3,9 @@ import Button from "@/components/Button.vue";
 import type Character from "@/models/Character";
 import type { TableColumns } from "@/models/Table";
 import { useFavouritesStore } from "@/stores/favourites";
-import { GenericTable } from "../components/Table.vue";
+import Table, { GenericTable } from "../components/Table.vue";
 
-const CharacterTable = GenericTable<Character>();
+const CharacterTable = GenericTable<Character>(Table);
 
 const favouritesStore = useFavouritesStore();
 

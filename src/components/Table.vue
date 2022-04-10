@@ -20,9 +20,9 @@ const defineGenericComponent = <T extends Record<string, any>>() =>
 
 const main = defineGenericComponent();
 
-export function GenericTable<T extends TableRecord>() {
-  const defineTComponent = () => defineGenericComponent<T>()
-  return main as ReturnType<typeof defineTComponent>;
+export function GenericTable<T extends TableRecord>(comp: typeof main) {
+  const defineTComponent = () => defineGenericComponent<T>();
+  return comp as ReturnType<typeof defineTComponent>;
 }
 
 export default main;
